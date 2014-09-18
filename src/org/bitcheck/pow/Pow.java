@@ -13,12 +13,42 @@ public class Pow {
 		int mode = 500;
 		
 		int x = 400;//r.nextInt(500);
+		int y = x;
 		
-		for (int i = 0; i != 1000; ++i) {
+		for (int i = 1; i != 1000; ++i) {
 			
 			x = calc(x, mode);
 			
 			System.out.println(x);
+
+			y = calc(y, mode);
+			y = calc(y, mode);
+
+			if (x == y) {
+
+				System.out.println("step = " + i + ", x = " + x);
+				
+				int meetStep = i;
+				int meetValue = x;
+				
+				for (; i != 1000; ++i) {
+
+					x = calc(x, mode);
+
+					System.out.println(x);
+					
+					if (x == meetValue) {
+						int N = i-meetStep;
+						int R = i % N;
+						
+						System.out.println("N = " + N + ", R = " + R + "i = " + i);
+						break;
+					}
+				}
+				
+
+			  break;
+			}
 			
 		}
 		
