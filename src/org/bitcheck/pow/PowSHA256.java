@@ -22,7 +22,7 @@ public class PowSHA256 {
 		
 		long time0 = System.currentTimeMillis();
 		
-		int mode = 44;
+		int mode = 8;
 		
 		//int x = 400;//r.nextInt(500);
 		//int y = x;
