@@ -5,22 +5,24 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Random;
 
-public class PowMD5Rev3 {
+public class PowSHA256 {
 
+	public static int HASH_BYTES = 32;
+	
 	public static void main(String[] args) {
 		
-		System.out.println("PowMD5Rev3");
+		System.out.println("PowSHA256");
 		
 		Random r = new Random();
 
-		byte[] source = md5("Hello World".getBytes());
+		byte[] source = sha256("Hello World".getBytes());
 
 		byte[] x = source;
 		byte[] y = x;
 		
 		long time0 = System.currentTimeMillis();
 		
-		int mode = 32;
+		int mode = 44;
 		
 		//int x = 400;//r.nextInt(500);
 		//int y = x;
@@ -64,32 +66,32 @@ public class PowMD5Rev3 {
 	}
 
 	
-	private static MessageDigest md;
+	private static MessageDigest sha;
 	
 	static {
 	 try {
-		md = MessageDigest.getInstance("MD5");
+		sha = MessageDigest.getInstance("SHA-256");
 	} catch (NoSuchAlgorithmException e) {
 		e.printStackTrace();
 	}
 	}
 	
-	public static byte[] md5(byte[] source) {
-		md.reset();
-		byte[] result = md.digest(source);
+	public static byte[] sha256(byte[] source) {
+		sha.reset();
+		byte[] result = sha.digest(source);
 		return result;
 	}
 	
 	public static byte[] calc(byte[] x, int mode, byte[] source) {
 		
-		byte[] result = md5(x);
+		byte[] result = sha256(x);
 		
 		return mode(result, mode, source);
 	}
 	
 	public static byte[] mode(byte[] x, int mode, byte[] source) {
 		
-		if (mode >= 16*8) {
+		if (mode >= HASH_BYTES * 8) {
 			throw new IllegalArgumentException("invalid mode " + mode);
 		}
 		
@@ -97,7 +99,7 @@ public class PowMD5Rev3 {
 		
 		int bits = mode % 8;
 		int fullBytes = mode / 8;
-		int lastZeroIndex = 16 - fullBytes;
+		int lastZeroIndex = HASH_BYTES - fullBytes;
 		if (bits > 0) {
 			lastZeroIndex--;
 		}
