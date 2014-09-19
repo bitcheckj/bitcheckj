@@ -28,7 +28,7 @@ public class Pow {
 
 			if (x == y) {
 
-				System.out.println("step = " + i + ", x = " + x);
+				System.out.println("step = " + (i+1) + ", x = " + x);
 				
 				int checkPoint = x;
 				

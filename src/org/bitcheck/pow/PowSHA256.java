@@ -22,12 +22,12 @@ public class PowSHA256 {
 		
 		long time0 = System.currentTimeMillis();
 		
-		int mode = 8;
+		int mode = 44;
 		
 		//int x = 400;//r.nextInt(500);
 		//int y = x;
 		
-		for (long i = 1; i != Long.MAX_VALUE; ++i) {
+		for (long i = 0; i != Long.MAX_VALUE; ++i) {
 			
 			x = calc(x, mode, source);
 			
@@ -36,34 +36,56 @@ public class PowSHA256 {
 
 			if (Arrays.equals(x, y)) {
 
-				System.out.println("step = " + i + ", mx = " + Arrays.toString(x));
+				System.out.println("step = " + (i+1) + ", x = " + Arrays.toString(x));
 				
-				long meetStep = i;
-				byte[] meetValue = x;
+				byte[] checkPoint = x;
 				
-				for (; i != Long.MAX_VALUE; ++i) {
+				y = source;
+				for (long j = 0; j != Long.MAX_VALUE; ++j) {
 
 					x = calc(x, mode, source);
+					y = calc(y, mode, source);
 
-					if (Arrays.equals(x, meetValue)) {
-						long N = i-meetStep;
-						long R = i % N;
+					if (Arrays.equals(x, checkPoint)) {
 						
-						System.out.println("N = " + N + ", R = " + R + ", i = " + i);
-						
-						x = source;
-						for (long k = 1; k != R; ++k) {
+						long N = j + 1;
+						System.out.println("y = " + y + ", N = " + N + ", checkPoint=" + Arrays.toString(checkPoint));
+
+						x = y;
+						y = source;
+						for (long k = 0; k != Long.MAX_VALUE; ++k) {
+							
 							x = calc(x, mode, source);
+							y = calc(y, mode, source);
+
+							if (Arrays.equals(y, x)) {
+								
+								long R = k + 1;
+								System.out.println("N = " + N + ", R = " + R + ", i = " + i + ", k = " + k + ", j = " + j);
+								
+								byte[] prev = null;
+								x = source;
+								for (int p = 0; p != R; ++p) {
+									prev = x;
+									x = calc(x, mode, source);
+								}
+								
+								System.out.println("enter loop " + Arrays.toString(x));
+								System.out.println("prev " + Arrays.toString(prev));
+								
+								for (int p = 0; p != N; ++p) {
+									prev = x;
+									x = calc(x, mode, source);
+								}
+
+								System.out.println("next loop " + Arrays.toString(x));
+								System.out.println("prev " + Arrays.toString(prev));
+
+								
+								break;
+							}
 						}
 						
-						System.out.println("enter loop = " + Arrays.toString(x));
-
-						for (long k = 1; k != N+1; ++k) {
-							x = calc(x, mode, source);
-							System.out.println("loop = " + Arrays.toString(x));
-						}
-
-
 						break;
 					}
 				}
