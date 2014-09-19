@@ -12,10 +12,12 @@ public class Pow {
 		
 		int mode = 500;
 		
-		int x = 400;//r.nextInt(500);
+		int source = 400;
+		
+		int x = source;//r.nextInt(500);
 		int y = x;
 		
-		for (int i = 1; i != 1000; ++i) {
+		for (int i = 0; i != 1000; ++i) {
 			
 			x = calc(x, mode);
 			
@@ -28,20 +30,59 @@ public class Pow {
 
 				System.out.println("step = " + i + ", x = " + x);
 				
-				int meetStep = i;
-				int meetValue = x;
+				int checkPoint = x;
 				
-				for (; i != 1000; ++i) {
+				y = source;
+				for (int j = 0; j != 1000; ++j) {
 
 					x = calc(x, mode);
+					y = calc(y, mode);
 
 					System.out.println(x);
 					
-					if (x == meetValue) {
-						int N = i-meetStep;
-						int R = i % N;
+					if (x == checkPoint) {
 						
-						System.out.println("N = " + N + ", R = " + R + "i = " + i);
+						int N = j + 1;
+						System.out.println("y = " + y + ", N = " + N + ", checkPoint=" + checkPoint);
+
+						x = y;
+						y = source;
+						for (int k = 0; k <= 1000; ++k) {
+							
+							x = calc(x, mode);
+							y = calc(y, mode);
+
+							if (y == x) {
+								
+								System.out.println("match x = " + x + ", y = " + y);
+								
+								int R = k + 1;
+								System.out.println("N = " + N + ", R = " + R + ", i = " + i + ", k = " + k + ", j = " + j);
+								
+								int prev = -1;
+								x = source;
+								for (int p = 0; p != R; ++p) {
+									prev = x;
+									x = calc(x, mode);
+								}
+								
+								System.out.println("enter loop " + x);
+								System.out.println("prev " + prev);
+								
+								for (int p = 0; p != N; ++p) {
+									prev = x;
+									x = calc(x, mode);
+								}
+
+								System.out.println("next loop " + x);
+								System.out.println("prev " + prev);
+
+								break;
+								
+							}
+							
+						}
+						
 						break;
 					}
 				}

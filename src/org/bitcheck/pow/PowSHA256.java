@@ -50,6 +50,20 @@ public class PowSHA256 {
 						long R = i % N;
 						
 						System.out.println("N = " + N + ", R = " + R + ", i = " + i);
+						
+						x = source;
+						for (long k = 1; k != R; ++k) {
+							x = calc(x, mode, source);
+						}
+						
+						System.out.println("enter loop = " + Arrays.toString(x));
+
+						for (long k = 1; k != N+1; ++k) {
+							x = calc(x, mode, source);
+							System.out.println("loop = " + Arrays.toString(x));
+						}
+
+
 						break;
 					}
 				}
