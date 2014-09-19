@@ -9,6 +9,8 @@ public class PowSHA256 {
 
 	public static int HASH_BYTES = 32;
 	
+	private static long hashCount = 0L;
+	
 	public static void main(String[] args) {
 		
 		System.out.println("PowSHA256");
@@ -99,6 +101,13 @@ public class PowSHA256 {
 		long time1 = System.currentTimeMillis();
 		System.out.println("timeMls = " + (time1 - time0));
 		
+		System.out.println("hashCount = " + hashCount);
+		
+		long variations = (1L << mode);
+		
+		System.out.println("variations = " + variations);
+		
+		
 	}
 
 	
@@ -115,6 +124,7 @@ public class PowSHA256 {
 	public static byte[] sha256(byte[] source) {
 		sha.reset();
 		byte[] result = sha.digest(source);
+		hashCount++;
 		return result;
 	}
 	
