@@ -10,6 +10,8 @@ Bitcheck Java PoC
 * Public and single Blockchain with better PoW (proof of work)
 * Checkbooks with transactions
 * DHT to lookup checkbook by ID
+* Peers to exchange checkbook files
+* Maning peers to support blockchain
 * Very light blockchains
 * Different versions/formats of checkbooks, extendable transactions
 * No need to download all checkbooks, only selected
