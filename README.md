@@ -34,4 +34,4 @@ Not solved problems
 
 Possible solution:
 Miner accures right to issue new checkbook only after successfull PoW, requires transfer of rights.
-1 checkbook per block or any other value. Checkbook name can be any '.- 0-9A-Za-z' unique name not less 20 chars. No checial chars '.- ' on the start or on the end.
+1 checkbook per block or any other value. Checkbook name can be any '.- 0-9A-Za-z' unique name 20-80 chars. No checial chars '.- ' on the start or on the end.
