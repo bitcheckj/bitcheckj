@@ -34,4 +34,4 @@ Not solved problems
 
 Possible solution:
 Miner accures right to issue new checkbook only after successfull PoW, requires transfer of rights.
-1 checkbook per block or any other value. Checkbook name can be domain name at the issue time with cpecial TEXT field.
+1 checkbook per block or any other value. Checkbook name can be domain name at the issue time with special TEXT field.
