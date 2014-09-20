@@ -5,8 +5,9 @@ Bitcheck Java PoC
 
 
 * Fully Legal
+* Distribuded by P2P
 * No currency, only checks
-* Public and single Blockchain
+* Public and single Blockchain with better PoW (proof of work)
 * Checkbooks with transactions
 * Very light blockchains
 * Different versions/formats of checkbooks, extendable transactions
