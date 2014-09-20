@@ -9,6 +9,7 @@ Bitcheck Java PoC
 * No currency, only checks
 * Public and single Blockchain with better PoW (proof of work)
 * Checkbooks with transactions
+* DHT to lookup checkbook by ID
 * Very light blockchains
 * Different versions/formats of checkbooks, extendable transactions
 * No need to download all checkbooks, only selected
